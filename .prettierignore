@@ -1,0 +1,30 @@
+# Dependencies
+node_modules/
+
+# Build outputs
+dist/
+build/
+.expo/
+
+# Native folders
+android/
+ios/
+
+# Generated files
+*.lock
+package-lock.json
+yarn.lock
+
+# Assets
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.svg
+*.ico
+*.ttf
+*.woff
+*.woff2
+
+# Cache
+.cache/
