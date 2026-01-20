@@ -3,6 +3,7 @@
 This document provides guidelines for AI coding assistants working on this project.
 
 **Supported AI Assistants:**
+
 - Claude (Anthropic) - Claude Code CLI, Cursor, Windsurf
 - Gemini (Google) - Gemini Code Assist, AI Studio
 - Serena IDE
@@ -77,6 +78,7 @@ Separate all changes into two distinct types:
 2. **BEHAVIORAL CHANGES**: Adding or modifying actual functionality
 
 **Rules:**
+
 - Never mix structural and behavioral changes in the same commit
 - Always make structural changes first when both are needed
 - Validate structural changes do not alter behavior by running tests before and after
@@ -84,6 +86,7 @@ Separate all changes into two distinct types:
 ### Commit Discipline
 
 Only commit when:
+
 1. ALL tests are passing
 2. ALL linter warnings have been resolved (`npm run lint`)
 3. The change represents a single logical unit of work
@@ -234,33 +237,33 @@ The development workflow follows 5 phases:
 
 ### Spec-Kit Commands
 
-| Command | Purpose |
-| --- | --- |
-| `/speckit.constitution` | Establish project principles and standards |
-| `/speckit.specify` | Create product specification |
-| `/speckit.plan` | Generate technical implementation plan |
-| `/speckit.tasks` | Break down plan into actionable tasks |
-| `/speckit.implement` | Execute implementation tasks |
-| `/speckit.clarify` | Address underspecified areas (optional) |
-| `/speckit.analyze` | Cross-artifact consistency check (optional) |
-| `/speckit.checklist` | Generate quality validation checklist (optional) |
+| Command                 | Purpose                                          |
+| ----------------------- | ------------------------------------------------ |
+| `/speckit.constitution` | Establish project principles and standards       |
+| `/speckit.specify`      | Create product specification                     |
+| `/speckit.plan`         | Generate technical implementation plan           |
+| `/speckit.tasks`        | Break down plan into actionable tasks            |
+| `/speckit.implement`    | Execute implementation tasks                     |
+| `/speckit.clarify`      | Address underspecified areas (optional)          |
+| `/speckit.analyze`      | Cross-artifact consistency check (optional)      |
+| `/speckit.checklist`    | Generate quality validation checklist (optional) |
 
 ### Development Commands
 
-| Command | Purpose |
-| --- | --- |
-| `/lint` | Run ESLint on the codebase |
+| Command   | Purpose                     |
+| --------- | --------------------------- |
+| `/lint`   | Run ESLint on the codebase  |
 | `/format` | Run Prettier to format code |
-| `/test` | Run test suite |
-| `/build` | Build the application |
+| `/test`   | Run test suite              |
+| `/build`  | Build the application       |
 
 ### Git Commands
 
-| Command | Purpose |
-| --- | --- |
-| `/commit` | Create a commit with proper message format |
-| `/commit --structural` | Create a structural change commit |
-| `/commit --behavioral` | Create a behavioral change commit |
+| Command                | Purpose                                    |
+| ---------------------- | ------------------------------------------ |
+| `/commit`              | Create a commit with proper message format |
+| `/commit --structural` | Create a structural change commit          |
+| `/commit --behavioral` | Create a behavioral change commit          |
 
 ---
 
@@ -285,31 +288,39 @@ The development workflow follows 5 phases:
 # Feature Name Specification
 
 ## Overview
+
 Brief description of the feature.
 
 ## Requirements
 
 ### Functional Requirements
+
 - FR-1: Description
 - FR-2: Description
 
 ### Non-Functional Requirements
+
 - NFR-1: Description
 
 ## User Stories
+
 - As a [user], I want [goal] so that [benefit]
 
 ## API Design
+
 Endpoint specifications if applicable.
 
 ## UI/UX Design
+
 Component and screen specifications.
 
 ## Test Scenarios
+
 - Scenario 1: Description
 - Scenario 2: Description
 
 ## Acceptance Criteria
+
 - [ ] Criterion 1
 - [ ] Criterion 2
 ```
@@ -392,12 +403,12 @@ services/api/reservations.ts:15-30
 
 ### LLM-Specific Notes
 
-| Assistant | Context File | Notes |
-| --- | --- | --- |
-| Claude Code | `CLAUDE.md` | Auto-loaded in Claude Code CLI |
-| Gemini | `CLAUDE.md` | Reference this file in prompts |
-| Cursor/Windsurf | `.cursorrules` or `CLAUDE.md` | Can use either format |
-| GitHub Copilot | `CLAUDE.md` | Include in context as needed |
+| Assistant       | Context File                  | Notes                          |
+| --------------- | ----------------------------- | ------------------------------ |
+| Claude Code     | `CLAUDE.md`                   | Auto-loaded in Claude Code CLI |
+| Gemini          | `CLAUDE.md`                   | Reference this file in prompts |
+| Cursor/Windsurf | `.cursorrules` or `CLAUDE.md` | Can use either format          |
+| GitHub Copilot  | `CLAUDE.md`                   | Include in context as needed   |
 
 ---
 
@@ -452,6 +463,7 @@ npm run web
 **Optional AI Attribution:**
 
 When AI assisted with the commit, you may add:
+
 ```
 Co-Authored-By: Claude <noreply@anthropic.com>
 Co-Authored-By: Gemini <noreply@google.com>

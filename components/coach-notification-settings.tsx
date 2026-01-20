@@ -14,9 +14,7 @@ import { Picker } from '@react-native-picker/picker';
 
 interface CoachNotificationSettingsProps {
   settings: CoachNotificationSettings;
-  onUpdateSettings: (
-    settings: Partial<CoachNotificationSettings>
-  ) => Promise<void>;
+  onUpdateSettings: (settings: Partial<CoachNotificationSettings>) => Promise<void>;
 }
 
 export function CoachNotificationSettingsComponent({
@@ -25,15 +23,9 @@ export function CoachNotificationSettingsComponent({
 }: CoachNotificationSettingsProps) {
   const [isUpdating, setIsUpdating] = useState(false);
   const tintColor = useThemeColor({}, 'tint');
-  const backgroundColor = useThemeColor(
-    { light: '#f5f5f5', dark: '#2a2a2a' },
-    'background'
-  );
+  const backgroundColor = useThemeColor({ light: '#f5f5f5', dark: '#2a2a2a' }, 'background');
 
-  const handleToggleSetting = async (
-    key: keyof CoachNotificationSettings,
-    value: boolean
-  ) => {
+  const handleToggleSetting = async (key: keyof CoachNotificationSettings, value: boolean) => {
     setIsUpdating(true);
     try {
       await onUpdateSettings({ [key]: value });
@@ -72,18 +64,14 @@ export function CoachNotificationSettingsComponent({
 
         <View style={styles.settingRow}>
           <View style={styles.settingInfo}>
-            <ThemedText style={styles.settingLabel}>
-              New Reservations
-            </ThemedText>
+            <ThemedText style={styles.settingLabel}>New Reservations</ThemedText>
             <ThemedText style={styles.settingDescription}>
               Get notified when users reserve your classes
             </ThemedText>
           </View>
           <Switch
             value={settings.reservationNotificationsEnabled}
-            onValueChange={(value) =>
-              handleToggleSetting('reservationNotificationsEnabled', value)
-            }
+            onValueChange={(value) => handleToggleSetting('reservationNotificationsEnabled', value)}
             disabled={isUpdating}
             trackColor={{ false: '#767577', true: tintColor }}
             thumbColor="#fff"
@@ -92,9 +80,7 @@ export function CoachNotificationSettingsComponent({
 
         <View style={styles.settingRow}>
           <View style={styles.settingInfo}>
-            <ThemedText style={styles.settingLabel}>
-              Cancellations
-            </ThemedText>
+            <ThemedText style={styles.settingLabel}>Cancellations</ThemedText>
             <ThemedText style={styles.settingDescription}>
               Get notified when users cancel reservations
             </ThemedText>
@@ -119,18 +105,14 @@ export function CoachNotificationSettingsComponent({
 
         <View style={styles.settingRow}>
           <View style={styles.settingInfo}>
-            <ThemedText style={styles.settingLabel}>
-              Enable Daily Summary
-            </ThemedText>
+            <ThemedText style={styles.settingLabel}>Enable Daily Summary</ThemedText>
             <ThemedText style={styles.settingDescription}>
               Receive a daily summary of your class reservations
             </ThemedText>
           </View>
           <Switch
             value={settings.dailySummaryEnabled}
-            onValueChange={(value) =>
-              handleToggleSetting('dailySummaryEnabled', value)
-            }
+            onValueChange={(value) => handleToggleSetting('dailySummaryEnabled', value)}
             disabled={isUpdating}
             trackColor={{ false: '#767577', true: tintColor }}
             thumbColor="#fff"
@@ -139,9 +121,7 @@ export function CoachNotificationSettingsComponent({
 
         {settings.dailySummaryEnabled && (
           <View style={styles.timePickerContainer}>
-            <ThemedText style={styles.timePickerLabel}>
-              Send summary at:
-            </ThemedText>
+            <ThemedText style={styles.timePickerLabel}>Send summary at:</ThemedText>
             <View style={styles.pickerWrapper}>
               <Picker
                 selectedValue={settings.dailySummaryTime}
@@ -150,11 +130,7 @@ export function CoachNotificationSettingsComponent({
                 style={styles.picker}
               >
                 {timeOptions.map((option) => (
-                  <Picker.Item
-                    key={option.value}
-                    label={option.label}
-                    value={option.value}
-                  />
+                  <Picker.Item key={option.value} label={option.label} value={option.value} />
                 ))}
               </Picker>
             </View>
@@ -166,8 +142,8 @@ export function CoachNotificationSettingsComponent({
       <ThemedView style={[styles.infoSection, { backgroundColor }]}>
         <ThemedText style={styles.infoIcon}>ℹ️</ThemedText>
         <ThemedText style={styles.infoText}>
-          These settings control notifications you receive about your classes. Users can
-          also choose which coaches they want to receive notifications from.
+          These settings control notifications you receive about your classes. Users can also choose
+          which coaches they want to receive notifications from.
         </ThemedText>
       </ThemedView>
     </View>

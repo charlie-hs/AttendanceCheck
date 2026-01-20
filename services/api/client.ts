@@ -69,7 +69,7 @@ class ApiClient {
     const url = new URL(`${this.baseUrl}${endpoint}`);
 
     if (params) {
-      Object.keys(params).forEach(key => {
+      Object.keys(params).forEach((key) => {
         if (params[key] !== undefined && params[key] !== null) {
           url.searchParams.append(key, String(params[key]));
         }

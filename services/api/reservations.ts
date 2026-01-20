@@ -18,9 +18,7 @@ export const reservationService = {
   /**
    * Create a new reservation for a class
    */
-  async createReservation(
-    request: CreateReservationRequest
-  ): Promise<CreateReservationResponse> {
+  async createReservation(request: CreateReservationRequest): Promise<CreateReservationResponse> {
     return apiClient.post<CreateReservationResponse>('/reservations', request);
   },
 

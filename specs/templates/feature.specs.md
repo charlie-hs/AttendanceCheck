@@ -47,16 +47,16 @@ Brief description of the feature and its purpose.
 
 ### Components
 
-| Component | Purpose | Location |
-| --- | --- | --- |
+| Component       | Purpose     | Location                        |
+| --------------- | ----------- | ------------------------------- |
 | `ComponentName` | Description | `components/component-name.tsx` |
 
 ### API Endpoints
 
-| Method | Endpoint | Description |
-| --- | --- | --- |
-| GET | `/api/resource` | Fetch resources |
-| POST | `/api/resource` | Create resource |
+| Method | Endpoint        | Description     |
+| ------ | --------------- | --------------- |
+| GET    | `/api/resource` | Fetch resources |
+| POST   | `/api/resource` | Create resource |
 
 ### Data Models
 
@@ -128,8 +128,8 @@ ScreenName
 
 ## Risks and Mitigations
 
-| Risk | Impact | Mitigation |
-| --- | --- | --- |
+| Risk   | Impact          | Mitigation          |
+| ------ | --------------- | ------------------- |
 | Risk 1 | High/Medium/Low | Mitigation strategy |
 
 ## References

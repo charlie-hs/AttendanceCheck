@@ -5,6 +5,7 @@ A React Native mobile application for managing CrossFit class reservations with 
 ## Features
 
 ### For Members
+
 - 📅 Browse and book CrossFit classes
 - 🔔 Receive reminders before classes start
 - ⚙️ Customize notification preferences per coach
@@ -12,6 +13,7 @@ A React Native mobile application for managing CrossFit class reservations with 
 - ❌ Cancel reservations easily
 
 ### For Coaches
+
 - 👥 View all reservations for your classes
 - ✅ Mark attendance (attended/no-show)
 - 🔔 Get notified when users book or cancel
@@ -19,6 +21,7 @@ A React Native mobile application for managing CrossFit class reservations with 
 - ⚙️ Configure notification preferences
 
 ### For Admins
+
 - 🏢 Manage all classes and reservations
 - 👤 User account management
 - 📊 System-wide analytics
@@ -84,11 +87,13 @@ AttendanceCheck/
 ### Installation
 
 1. **Clone the repository**
+
    ```bash
    cd /home/datamaker/development/projects/AttendanceCheck
    ```
 
 2. **Install dependencies**
+
    ```bash
    npm install
    ```
@@ -96,17 +101,20 @@ AttendanceCheck/
 3. **Configure environment variables**
 
    Create a `.env` file in the project root:
+
    ```env
    EXPO_PUBLIC_API_URL=http://your-backend-url/api
    EXPO_PUBLIC_PROJECT_ID=your-expo-project-id
    ```
 
 4. **Start the development server**
+
    ```bash
    npm start
    ```
 
 5. **Run on specific platform**
+
    ```bash
    # iOS
    npm run ios
@@ -123,11 +131,13 @@ AttendanceCheck/
 The app requires a backend API with the following endpoints:
 
 ### Authentication
+
 - `POST /api/auth/login` - User login
 - `POST /api/auth/register` - User registration
 - `POST /api/auth/logout` - User logout
 
 ### Classes
+
 - `GET /api/classes` - List classes
 - `GET /api/classes/:id` - Get class details
 - `POST /api/classes` - Create class (coach/admin)
@@ -137,12 +147,14 @@ The app requires a backend API with the following endpoints:
 - `GET /api/classes/:id/availability` - Check availability
 
 ### Reservations
+
 - `GET /api/reservations` - List reservations (with filters)
 - `POST /api/reservations` - Create reservation
 - `PATCH /api/reservations/:id/cancel` - Cancel reservation
 - `PATCH /api/reservations/:id/status` - Update status (coach/admin)
 
 ### Notifications
+
 - `GET /api/users/:userId/notification-settings` - Get settings
 - `PATCH /api/users/:userId/notification-settings` - Update settings
 - `POST /api/users/:userId/notification-settings/coach-preferences` - Set coach preference
@@ -157,6 +169,7 @@ See [RESERVATION_SYSTEM.md](docs/RESERVATION_SYSTEM.md) for complete API specifi
 ### Push Notifications
 
 1. **Configure in app.json**
+
    ```json
    {
      "expo": {
@@ -184,6 +197,7 @@ See [RESERVATION_SYSTEM.md](docs/RESERVATION_SYSTEM.md) for complete API specifi
 ### Theme Customization
 
 Edit `constants/theme.ts`:
+
 ```typescript
 export const Colors = {
   light: {
@@ -206,6 +220,7 @@ export const Colors = {
 ### Adding a New Screen
 
 1. Create file in `app/` directory
+
    ```tsx
    // app/new-screen.tsx
    export default function NewScreen() {
@@ -222,6 +237,7 @@ export const Colors = {
 ### Adding a New API Endpoint
 
 1. Add service method in `services/api/`
+
    ```typescript
    // services/api/example.ts
    export const exampleService = {
@@ -239,6 +255,7 @@ export const Colors = {
 ### Adding a New Component
 
 1. Create component file in `components/`
+
    ```tsx
    // components/my-component.tsx
    export function MyComponent({ prop }: MyComponentProps) {
@@ -254,6 +271,7 @@ export const Colors = {
 ## Testing
 
 ### Run Linter
+
 ```bash
 npm run lint
 ```
@@ -278,11 +296,13 @@ npm run lint
 1. **Configure app.json** with production settings
 
 2. **Build for iOS**
+
    ```bash
    eas build --platform ios
    ```
 
 3. **Build for Android**
+
    ```bash
    eas build --platform android
    ```
@@ -300,26 +320,31 @@ See [Expo EAS Build Documentation](https://docs.expo.dev/build/introduction/) fo
 ### Common Issues
 
 **1. "Cannot connect to backend"**
+
 - Verify `EXPO_PUBLIC_API_URL` is correct
 - Check backend is running
 - On iOS simulator, use computer's IP instead of localhost
 
 **2. "Notifications not appearing"**
+
 - Check permissions: Settings → AttendanceCheck → Notifications
 - Test on physical device (not simulator)
 - Verify push token is registered with backend
 
 **3. "Module not found" errors**
+
 - Clear cache: `npm start -- --clear`
 - Delete `node_modules` and reinstall: `rm -rf node_modules && npm install`
 
 **4. "Types not found"**
+
 - Restart TypeScript server in VS Code
 - Check `tsconfig.json` paths are correct
 
 ### Debug Mode
 
 Enable debug logs:
+
 ```typescript
 // In app/_layout.tsx
 if (__DEV__) {
@@ -348,6 +373,7 @@ MIT
 ## Support
 
 For questions or issues:
+
 - Create an issue in the repository
 - Contact the development team
 - Refer to documentation in `docs/`

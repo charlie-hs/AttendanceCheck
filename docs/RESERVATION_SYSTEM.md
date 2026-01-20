@@ -7,6 +7,7 @@ This document describes the reservation system implementation for the Attendance
 ## Features
 
 ### 1. User Features
+
 - **Browse Classes**: View upcoming CrossFit classes with coach, time, and availability
 - **Make Reservations**: Book spots in classes with real-time capacity tracking
 - **Cancel Reservations**: Cancel bookings with optional reason
@@ -15,6 +16,7 @@ This document describes the reservation system implementation for the Attendance
 - **Coach Preferences**: Choose which coaches to receive notifications from
 
 ### 2. Coach Features
+
 - **Class Management**: Create, update, and cancel classes
 - **View Reservations**: See all users registered for their classes
 - **Mark Attendance**: Mark users as attended or no-show
@@ -23,6 +25,7 @@ This document describes the reservation system implementation for the Attendance
 - **Notification Settings**: Configure when to receive alerts
 
 ### 3. Admin Features
+
 - **System Overview**: View all classes and reservations across all coaches
 - **User Management**: Manage user accounts and roles
 - **Analytics**: Track attendance and reservation metrics
@@ -32,6 +35,7 @@ This document describes the reservation system implementation for the Attendance
 ### Data Models
 
 #### User
+
 ```typescript
 interface User {
   id: string;
@@ -44,6 +48,7 @@ interface User {
 ```
 
 #### Coach
+
 ```typescript
 interface Coach {
   id: string;
@@ -57,6 +62,7 @@ interface Coach {
 ```
 
 #### CrossFitClass
+
 ```typescript
 interface CrossFitClass {
   id: string;
@@ -73,6 +79,7 @@ interface CrossFitClass {
 ```
 
 #### Reservation
+
 ```typescript
 interface Reservation {
   id: string;
@@ -90,6 +97,7 @@ interface Reservation {
 ### Notification Settings
 
 #### User Notification Settings
+
 ```typescript
 interface UserNotificationSettings {
   id: string;
@@ -108,6 +116,7 @@ interface UserNotificationSettings {
 ```
 
 #### Coach Notification Settings
+
 ```typescript
 interface CoachNotificationSettings {
   id: string;
@@ -127,40 +136,40 @@ interface CoachNotificationSettings {
 
 ### Classes
 
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| GET | `/api/classes` | Get all classes (with filters) |
-| GET | `/api/classes/:id` | Get single class |
-| GET | `/api/classes/:id/reservations` | Get class reservations |
-| GET | `/api/classes/:id/availability` | Check class availability |
-| POST | `/api/classes` | Create class (coach/admin) |
-| PATCH | `/api/classes/:id` | Update class (coach/admin) |
-| PATCH | `/api/classes/:id/cancel` | Cancel class (coach/admin) |
-| DELETE | `/api/classes/:id` | Delete class (admin) |
+| Method | Endpoint                        | Description                    |
+| ------ | ------------------------------- | ------------------------------ |
+| GET    | `/api/classes`                  | Get all classes (with filters) |
+| GET    | `/api/classes/:id`              | Get single class               |
+| GET    | `/api/classes/:id/reservations` | Get class reservations         |
+| GET    | `/api/classes/:id/availability` | Check class availability       |
+| POST   | `/api/classes`                  | Create class (coach/admin)     |
+| PATCH  | `/api/classes/:id`              | Update class (coach/admin)     |
+| PATCH  | `/api/classes/:id/cancel`       | Cancel class (coach/admin)     |
+| DELETE | `/api/classes/:id`              | Delete class (admin)           |
 
 ### Reservations
 
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| GET | `/api/reservations` | Get reservations (with filters) |
-| GET | `/api/reservations/:id` | Get single reservation |
-| POST | `/api/reservations` | Create reservation |
-| PATCH | `/api/reservations/:id/cancel` | Cancel reservation |
-| PATCH | `/api/reservations/:id/status` | Update status (coach/admin) |
+| Method | Endpoint                       | Description                     |
+| ------ | ------------------------------ | ------------------------------- |
+| GET    | `/api/reservations`            | Get reservations (with filters) |
+| GET    | `/api/reservations/:id`        | Get single reservation          |
+| POST   | `/api/reservations`            | Create reservation              |
+| PATCH  | `/api/reservations/:id/cancel` | Cancel reservation              |
+| PATCH  | `/api/reservations/:id/status` | Update status (coach/admin)     |
 
 ### Notifications
 
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| GET | `/api/users/:userId/notification-settings` | Get user notification settings |
-| PATCH | `/api/users/:userId/notification-settings` | Update notification settings |
-| POST | `/api/users/:userId/notification-settings/coach-preferences` | Update coach preference |
-| DELETE | `/api/users/:userId/notification-settings/coach-preferences/:coachId` | Remove coach preference |
-| GET | `/api/coaches/:coachId/notification-settings` | Get coach notification settings |
-| PATCH | `/api/coaches/:coachId/notification-settings` | Update coach settings |
-| GET | `/api/users/:userId/notifications` | Get notification history |
-| POST | `/api/users/:userId/notifications/mark-all-read` | Mark all as read |
-| POST | `/api/users/:userId/push-tokens` | Register push token |
+| Method | Endpoint                                                              | Description                     |
+| ------ | --------------------------------------------------------------------- | ------------------------------- |
+| GET    | `/api/users/:userId/notification-settings`                            | Get user notification settings  |
+| PATCH  | `/api/users/:userId/notification-settings`                            | Update notification settings    |
+| POST   | `/api/users/:userId/notification-settings/coach-preferences`          | Update coach preference         |
+| DELETE | `/api/users/:userId/notification-settings/coach-preferences/:coachId` | Remove coach preference         |
+| GET    | `/api/coaches/:coachId/notification-settings`                         | Get coach notification settings |
+| PATCH  | `/api/coaches/:coachId/notification-settings`                         | Update coach settings           |
+| GET    | `/api/users/:userId/notifications`                                    | Get notification history        |
+| POST   | `/api/users/:userId/notifications/mark-all-read`                      | Mark all as read                |
+| POST   | `/api/users/:userId/push-tokens`                                      | Register push token             |
 
 ## Notification Flow
 
@@ -198,9 +207,11 @@ interface CoachNotificationSettings {
 ## UI Components
 
 ### ClassCard
+
 Displays a single class with reservation button.
 
 **Props:**
+
 - `class: CrossFitClass` - Class data
 - `onReserve?: (classId: string) => void` - Reserve callback
 - `onCancel?: (classId: string) => void` - Cancel callback
@@ -208,6 +219,7 @@ Displays a single class with reservation button.
 - `showReserveButton?: boolean` - Show action button
 
 **Usage:**
+
 ```tsx
 <ClassCard
   class={classData}
@@ -218,15 +230,18 @@ Displays a single class with reservation button.
 ```
 
 ### ReservationList
+
 Displays list of reservations for coaches/admins.
 
 **Props:**
+
 - `reservations: Reservation[]` - List of reservations
 - `onMarkAttended?: (id: string) => void` - Mark attended callback
 - `onMarkNoShow?: (id: string) => void` - Mark no-show callback
 - `emptyMessage?: string` - Message when empty
 
 **Usage:**
+
 ```tsx
 <ReservationList
   reservations={reservations}
@@ -236,15 +251,18 @@ Displays list of reservations for coaches/admins.
 ```
 
 ### NotificationSettings
+
 User notification preferences UI.
 
 **Props:**
+
 - `settings: UserNotificationSettings` - Current settings
 - `coaches: Coach[]` - Available coaches
 - `onUpdateSettings: (settings) => Promise<void>` - Update callback
 - `onUpdateCoachPreference: (coachId, enabled) => Promise<void>` - Coach preference callback
 
 **Usage:**
+
 ```tsx
 <NotificationSettings
   settings={userSettings}
@@ -255,18 +273,18 @@ User notification preferences UI.
 ```
 
 ### CoachNotificationSettings
+
 Coach notification preferences UI.
 
 **Props:**
+
 - `settings: CoachNotificationSettings` - Current settings
 - `onUpdateSettings: (settings) => Promise<void>` - Update callback
 
 **Usage:**
+
 ```tsx
-<CoachNotificationSettings
-  settings={coachSettings}
-  onUpdateSettings={handleUpdateCoachSettings}
-/>
+<CoachNotificationSettings settings={coachSettings} onUpdateSettings={handleUpdateCoachSettings} />
 ```
 
 ## Implementation Guide
@@ -278,6 +296,7 @@ npm install
 ```
 
 New packages added:
+
 - `expo-notifications` - Push notifications
 - `expo-device` - Device detection
 - `expo-secure-store` - Secure token storage
@@ -286,6 +305,7 @@ New packages added:
 ### 2. Configure Push Notifications
 
 Add to `app.json`:
+
 ```json
 {
   "expo": {
@@ -305,6 +325,7 @@ Add to `app.json`:
 ### 3. Initialize Notifications in Root Layout
 
 Update `app/_layout.tsx`:
+
 ```tsx
 import { useEffect } from 'react';
 import { pushNotificationService } from '@/services/notifications';
@@ -318,7 +339,7 @@ export default function RootLayout() {
     pushNotificationService.configureNotificationChannels();
 
     // Get push token and register with backend
-    pushNotificationService.getExpoPushToken().then(token => {
+    pushNotificationService.getExpoPushToken().then((token) => {
       if (token) {
         // Send to backend
         notificationService.registerPushToken(userId, token);
@@ -326,15 +347,13 @@ export default function RootLayout() {
     });
 
     // Handle notification responses
-    const subscription = pushNotificationService.addNotificationResponseListener(
-      (response) => {
-        const data = response.notification.request.content.data;
-        // Navigate based on notification type
-        if (data.type === 'CLASS_REMINDER') {
-          router.push(`/classes/${data.classId}`);
-        }
+    const subscription = pushNotificationService.addNotificationResponseListener((response) => {
+      const data = response.notification.request.content.data;
+      // Navigate based on notification type
+      if (data.type === 'CLASS_REMINDER') {
+        router.push(`/classes/${data.classId}`);
       }
-    );
+    });
 
     return () => subscription.remove();
   }, []);
@@ -346,6 +365,7 @@ export default function RootLayout() {
 ### 4. Implement Class Listing Screen
 
 Create `app/(tabs)/classes.tsx`:
+
 ```tsx
 import { useState, useEffect } from 'react';
 import { FlatList } from 'react-native';
@@ -376,7 +396,7 @@ export default function ClassesScreen() {
     const result = await reservationService.createReservation({ classId });
 
     // Schedule local notification
-    const classData = classes.find(c => c.id === classId);
+    const classData = classes.find((c) => c.id === classId);
     if (classData && userSettings.classReminderEnabled) {
       await pushNotificationService.scheduleClassReminder({
         class: classData,
@@ -390,9 +410,9 @@ export default function ClassesScreen() {
   };
 
   const handleCancel = async (classId: string) => {
-    const reservation = userReservations.find(r => r.classId === classId);
+    const reservation = userReservations.find((r) => r.classId === classId);
     await reservationService.cancelReservation({
-      reservationId: reservation.id
+      reservationId: reservation.id,
     });
 
     await loadClasses();
@@ -407,10 +427,10 @@ export default function ClassesScreen() {
           class={item}
           onReserve={handleReserve}
           onCancel={handleCancel}
-          isReserved={userReservations.some(r => r.classId === item.id)}
+          isReserved={userReservations.some((r) => r.classId === item.id)}
         />
       )}
-      keyExtractor={item => item.id}
+      keyExtractor={(item) => item.id}
     />
   );
 }
@@ -419,6 +439,7 @@ export default function ClassesScreen() {
 ### 5. Implement Coach Dashboard
 
 Create `app/(tabs)/coach-dashboard.tsx`:
+
 ```tsx
 import { useState, useEffect } from 'react';
 import { View, ScrollView } from 'react-native';
@@ -462,6 +483,7 @@ export default function CoachDashboard() {
 ### 6. Implement Settings Screen
 
 Create `app/(tabs)/settings.tsx`:
+
 ```tsx
 import { useState, useEffect } from 'react';
 import { ScrollView } from 'react-native';
@@ -541,13 +563,15 @@ const { Expo } = require('expo-server-sdk');
 const expo = new Expo();
 
 async function sendPushNotification(pushToken, title, body, data) {
-  const messages = [{
-    to: pushToken,
-    sound: 'default',
-    title,
-    body,
-    data,
-  }];
+  const messages = [
+    {
+      to: pushToken,
+      sound: 'default',
+      title,
+      body,
+      data,
+    },
+  ];
 
   const chunks = expo.chunkPushNotifications(messages);
   const tickets = [];
@@ -618,6 +642,7 @@ async function sendPushNotification(pushToken, title, body, data) {
 ## Support
 
 For issues or questions, please refer to:
+
 - [Expo Notifications Documentation](https://docs.expo.dev/versions/latest/sdk/notifications/)
 - [React Navigation Documentation](https://reactnavigation.org/)
 - [TypeScript Documentation](https://www.typescriptlang.org/)

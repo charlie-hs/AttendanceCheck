@@ -29,10 +29,7 @@ export function ClassCard({
   const [isLoading, setIsLoading] = useState(false);
   const tintColor = useThemeColor({}, 'tint');
   const textColor = useThemeColor({}, 'text');
-  const backgroundColor = useThemeColor(
-    { light: '#f5f5f5', dark: '#2a2a2a' },
-    'background'
-  );
+  const backgroundColor = useThemeColor({ light: '#f5f5f5', dark: '#2a2a2a' }, 'background');
 
   const startTime = new Date(classData.startTime);
   const endTime = new Date(classData.endTime);
@@ -152,10 +149,7 @@ export function ClassCard({
         <View style={styles.buttonContainer}>
           {!isReserved ? (
             <Pressable
-              style={[
-                styles.button,
-                { backgroundColor: isFull ? '#9ca3af' : tintColor },
-              ]}
+              style={[styles.button, { backgroundColor: isFull ? '#9ca3af' : tintColor }]}
               onPress={handleReserve}
               disabled={isFull || isLoading}
             >

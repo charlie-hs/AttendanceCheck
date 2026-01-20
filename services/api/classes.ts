@@ -5,11 +5,7 @@
  */
 
 import { apiClient } from './client';
-import type {
-  CrossFitClass,
-  GetClassesRequest,
-  ClassStatus,
-} from '@/types/models';
+import type { CrossFitClass, GetClassesRequest, ClassStatus } from '@/types/models';
 
 export interface CreateClassRequest {
   coachId: string;
@@ -71,10 +67,7 @@ export const classService = {
   /**
    * Get classes for a specific date range
    */
-  async getClassesByDateRange(
-    startDate: string,
-    endDate: string
-  ): Promise<CrossFitClass[]> {
+  async getClassesByDateRange(startDate: string, endDate: string): Promise<CrossFitClass[]> {
     return apiClient.get<CrossFitClass[]>('/classes', {
       startDate,
       endDate,
@@ -91,10 +84,7 @@ export const classService = {
   /**
    * Update a class (coach/admin only)
    */
-  async updateClass(
-    classId: string,
-    request: UpdateClassRequest
-  ): Promise<CrossFitClass> {
+  async updateClass(classId: string, request: UpdateClassRequest): Promise<CrossFitClass> {
     return apiClient.patch<CrossFitClass>(`/classes/${classId}`, request);
   },
 

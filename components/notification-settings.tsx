@@ -6,11 +6,7 @@
 
 import { View, Text, StyleSheet, Switch, Pressable, Alert } from 'react-native';
 import { useState } from 'react';
-import type {
-  UserNotificationSettings,
-  CoachNotificationPreference,
-  Coach,
-} from '@/types/models';
+import type { UserNotificationSettings, CoachNotificationPreference, Coach } from '@/types/models';
 import { ThemedView } from './themed-view';
 import { ThemedText } from './themed-text';
 import { useThemeColor } from '@/hooks/use-theme-color';
@@ -19,10 +15,7 @@ interface NotificationSettingsProps {
   settings: UserNotificationSettings;
   coaches: Coach[];
   onUpdateSettings: (settings: Partial<UserNotificationSettings>) => Promise<void>;
-  onUpdateCoachPreference: (
-    coachId: string,
-    enabled: boolean
-  ) => Promise<void>;
+  onUpdateCoachPreference: (coachId: string, enabled: boolean) => Promise<void>;
 }
 
 export function NotificationSettings({
@@ -33,10 +26,7 @@ export function NotificationSettings({
 }: NotificationSettingsProps) {
   const [isUpdating, setIsUpdating] = useState(false);
   const tintColor = useThemeColor({}, 'tint');
-  const backgroundColor = useThemeColor(
-    { light: '#f5f5f5', dark: '#2a2a2a' },
-    'background'
-  );
+  const backgroundColor = useThemeColor({ light: '#f5f5f5', dark: '#2a2a2a' }, 'background');
 
   const handleToggleNotifications = async (value: boolean) => {
     setIsUpdating(true);
@@ -87,9 +77,7 @@ export function NotificationSettings({
   };
 
   const getCoachPreference = (coachId: string): boolean => {
-    const preference = settings.coachNotificationPreferences.find(
-      (p) => p.coachId === coachId
-    );
+    const preference = settings.coachNotificationPreferences.find((p) => p.coachId === coachId);
     return preference?.notificationsEnabled ?? true; // Default to enabled
   };
 
@@ -110,12 +98,8 @@ export function NotificationSettings({
 
         <View style={styles.settingRow}>
           <View style={styles.settingInfo}>
-            <ThemedText style={styles.settingLabel}>
-              Enable Notifications
-            </ThemedText>
-            <ThemedText style={styles.settingDescription}>
-              Receive all app notifications
-            </ThemedText>
+            <ThemedText style={styles.settingLabel}>Enable Notifications</ThemedText>
+            <ThemedText style={styles.settingDescription}>Receive all app notifications</ThemedText>
           </View>
           <Switch
             value={settings.notificationsEnabled}
@@ -135,9 +119,7 @@ export function NotificationSettings({
 
         <View style={styles.settingRow}>
           <View style={styles.settingInfo}>
-            <ThemedText style={styles.settingLabel}>
-              Class Reminders
-            </ThemedText>
+            <ThemedText style={styles.settingLabel}>Class Reminders</ThemedText>
             <ThemedText style={styles.settingDescription}>
               Get notified before your class starts
             </ThemedText>
@@ -194,9 +176,7 @@ export function NotificationSettings({
         {coaches.map((coach) => (
           <View key={coach.id} style={styles.coachRow}>
             <View style={styles.coachInfo}>
-              <ThemedText style={styles.coachName}>
-                {coach.user.name}
-              </ThemedText>
+              <ThemedText style={styles.coachName}>{coach.user.name}</ThemedText>
               {coach.specialties.length > 0 && (
                 <ThemedText style={styles.coachSpecialties}>
                   {coach.specialties.join(', ')}
@@ -205,9 +185,7 @@ export function NotificationSettings({
             </View>
             <Switch
               value={getCoachPreference(coach.id)}
-              onValueChange={(value) =>
-                handleToggleCoachNotifications(coach.id, value)
-              }
+              onValueChange={(value) => handleToggleCoachNotifications(coach.id, value)}
               disabled={isUpdating || !settings.notificationsEnabled}
               trackColor={{ false: '#767577', true: tintColor }}
               thumbColor="#fff"

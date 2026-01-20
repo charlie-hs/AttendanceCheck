@@ -56,13 +56,8 @@ export const notificationService = {
   /**
    * Delete coach notification preference (use default)
    */
-  async deleteCoachNotificationPreference(
-    userId: string,
-    coachId: string
-  ): Promise<void> {
-    return apiClient.delete(
-      `/users/${userId}/notification-settings/coach-preferences/${coachId}`
-    );
+  async deleteCoachNotificationPreference(userId: string, coachId: string): Promise<void> {
+    return apiClient.delete(`/users/${userId}/notification-settings/coach-preferences/${coachId}`);
   },
 
   // ============================================================================
@@ -73,9 +68,7 @@ export const notificationService = {
    * Get coach notification settings
    */
   async getCoachNotificationSettings(coachId: string): Promise<CoachNotificationSettings> {
-    return apiClient.get<CoachNotificationSettings>(
-      `/coaches/${coachId}/notification-settings`
-    );
+    return apiClient.get<CoachNotificationSettings>(`/coaches/${coachId}/notification-settings`);
   },
 
   /**

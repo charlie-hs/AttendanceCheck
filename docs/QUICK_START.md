@@ -24,6 +24,7 @@ npm start
 ```
 
 Then press:
+
 - `i` for iOS simulator
 - `a` for Android emulator
 - Scan QR code with Expo Go app on your phone
@@ -39,12 +40,14 @@ Then press:
 ## 📱 Key Features Overview
 
 ### For Users
+
 1. **Browse Classes** → Home tab → View upcoming CrossFit classes
 2. **Make Reservation** → Tap class card → "Reserve Spot" button
 3. **Set Notifications** → Settings → Configure reminders
 4. **Choose Coaches** → Settings → Select which coaches to follow
 
 ### For Coaches
+
 1. **View Reservations** → Coach Dashboard → See all bookings
 2. **Mark Attendance** → Tap reservation → "Mark Attended" or "No Show"
 3. **Configure Alerts** → Settings → Set notification preferences
@@ -103,29 +106,34 @@ export const Colors = {
 ## 📦 What's Included
 
 ### ✅ Complete Data Models
+
 - User, Coach, Class, Reservation models
 - Notification settings models
 - TypeScript types for all API requests/responses
 
 ### ✅ API Service Layer
+
 - Class management (`classService`)
 - Reservation management (`reservationService`)
 - Notification management (`notificationService`)
 - Configured API client with auth support
 
 ### ✅ UI Components
+
 - `<ClassCard />` - Display and book classes
 - `<ReservationList />` - Manage reservations
 - `<NotificationSettings />` - User notification preferences
 - `<CoachNotificationSettings />` - Coach notification config
 
 ### ✅ Notification System
+
 - Local push notifications
 - Class reminders
 - Reservation alerts
 - Coach-specific preferences
 
 ### ✅ Documentation
+
 - Complete system documentation
 - API endpoint reference
 - Component usage examples
@@ -172,6 +180,7 @@ await pushNotificationService.scheduleClassReminder({
 ## 🐛 Troubleshooting
 
 ### App won't start?
+
 ```bash
 # Clear cache
 npm start -- --clear
@@ -181,11 +190,13 @@ rm -rf node_modules && npm install
 ```
 
 ### Can't connect to backend?
+
 - Check `EXPO_PUBLIC_API_URL` in `.env`
 - Use your computer's IP address (not `localhost`) for physical devices
 - Verify backend is running
 
 ### Notifications not working?
+
 - Test on **physical device** (not simulator)
 - Check notification permissions in device settings
 - Verify `expo-notifications` plugin in `app.json`

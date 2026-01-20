@@ -23,10 +23,7 @@ export function ReservationList({
   onMarkNoShow,
   emptyMessage = 'No reservations found',
 }: ReservationListProps) {
-  const backgroundColor = useThemeColor(
-    { light: '#f5f5f5', dark: '#2a2a2a' },
-    'background'
-  );
+  const backgroundColor = useThemeColor({ light: '#f5f5f5', dark: '#2a2a2a' }, 'background');
 
   if (reservations.length === 0) {
     return (
@@ -120,12 +117,7 @@ function ReservationCard({
           </ThemedText>
           <ThemedText style={styles.userEmail}>{reservation.user.email}</ThemedText>
         </View>
-        <View
-          style={[
-            styles.statusBadge,
-            { backgroundColor: getStatusColor(reservation.status) },
-          ]}
-        >
+        <View style={[styles.statusBadge, { backgroundColor: getStatusColor(reservation.status) }]}>
           <Text style={styles.statusText}>{getStatusLabel(reservation.status)}</Text>
         </View>
       </View>
@@ -167,9 +159,7 @@ function ReservationCard({
               style={[styles.actionButton, styles.noShowButton]}
               onPress={() => onMarkNoShow(reservation.id)}
             >
-              <Text style={[styles.actionButtonText, styles.noShowButtonText]}>
-                No Show
-              </Text>
+              <Text style={[styles.actionButtonText, styles.noShowButtonText]}>No Show</Text>
             </Pressable>
           )}
         </View>
