@@ -7,6 +7,7 @@ module.exports = {
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
   moduleNameMapper: {
     '^@/(.*)$': '<rootDir>/$1',
+    '^expo-symbols$': '<rootDir>/__mocks__/expo-symbols.js',
   },
   setupFilesAfterEnv: ['<rootDir>/jest-setup.js'],
   collectCoverageFrom: [

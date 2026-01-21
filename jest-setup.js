@@ -39,6 +39,12 @@ jest.mock('expo-constants', () => ({
   },
 }));
 
+// Mock expo-splash-screen
+jest.mock('expo-splash-screen', () => ({
+  preventAutoHideAsync: jest.fn(),
+  hideAsync: jest.fn(),
+}));
+
 // Mock expo-router
 jest.mock('expo-router', () => ({
   useRouter: () => ({
